@@ -40,9 +40,7 @@ GRAIL-Net is a novel deep learning model built using PyTorch to detect AI-genera
 4. Visualization: For every image, three outputs are shown:
 
         Original
-
         Reconstructed
-
         Residual heatmap
 
 
@@ -53,7 +51,37 @@ To ensure a clean environment:
 
     git clone https://github.com/yourusername/GRAIL-Net.git
 
-2. Create and Activate Virtual Environment
+2. Download Dataset:
+
+    This project uses two datasets:
+
+    Real Faces: https://www.kaggle.com/datasets/arnaud58/flickrfaceshq-dataset-ffhq?select=00005.png
+    Fake Faces: https://www.kaggle.com/datasets/almightyj/person-face-dataset-thispersondoesnotexist
+
+    After downloading:
+
+    Manually place the  images into this structure in the project root:
+
+    data/
+    ├── real_raw/     ← raw real images from FFHQ
+    └── fake_raw/     ← raw fake images from ThisPersonDoesNotExist
+
+    Then, run fake_dataset.py to resize and organize the training data:
+
+        python fake_dataset.py
+       
+    This will create a data/ folder with the following structure:
+
+        data/
+        ├── real/          ← resized real images
+        ├── fake/          ← resized fake images
+        ├── real_raw/
+        └── fake_raw/
+        ___ fake_dataset.py
+    
+    Make sure the data/ folder is in the root directory of the project before training or inference.
+
+3. Create and Activate Virtual Environment
 
 On Windows:
 
@@ -65,7 +93,7 @@ On macOS/Linux:
     python3 -m venv venv
     source venv/bin/activate
 
-3. Install Dependencies
+4. Install Dependencies
 
     pip install -r requirements.txt
 
@@ -74,9 +102,7 @@ On macOS/Linux:
 Each visualization contains:
 
     Left: Original Image
-
     Center: Reconstructed Output
-
     Right: Residual Heatmap
 
 
