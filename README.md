@@ -17,11 +17,11 @@ GRAIL-Net is a novel deep learning model built using PyTorch to detect AI-genera
         │   ├── real/                  # Resized real images
         │   ├── fake/                  # Resized fake images
         │   ├── fake_dataset.py        # Dataset loader
+        |   ├── resize_images.py       # Script to resize raw images
         │   └── __init__.py
         │
         ├── visualizations/            # Saved visualizations
         │
-        ├── resize_images.py           # Script to resize raw images
         ├── train_reconstructor.py     # Train autoencoder
         ├── train_interrogator.py      # Train classifier on residuals
         ├── inference.py               # Run predictions and generate visualizations
@@ -60,26 +60,43 @@ To ensure a clean environment:
 
     After downloading:
 
-    Manually place the  images into this structure in the project root:
+    Manually place the images into this folder structure at the root of the project:
+
 
     data/
     ├── real_raw/     ← raw real images from FFHQ
     └── fake_raw/     ← raw fake images from ThisPersonDoesNotExist
+    
+    Step 1: Resize the raw images
+    
+    Run the following script to resize raw images to a consistent format:
 
-    Then, run fake_dataset.py to resize and organize the training data:
+        python resize_images.py
 
-        python fake_dataset.py
-       
-    This will create a data/ folder with the following structure:
+    This script reads from real_raw/ and fake_raw/, resizes the images (e.g., 128x128), and saves them into:
 
         data/
-        ├── real/          ← resized real images
-        ├── fake/          ← resized fake images
-        ├── real_raw/
-        └── fake_raw/
-        ___ fake_dataset.py
+        ├── real/         ← resized real images
+        └── fake/         ← resized fake images
     
-    Make sure the data/ folder is in the root directory of the project before training or inference.
+    Step 2: Load data during training
+
+        The fake_dataset.py script defines a PyTorch Dataset class that automatically reads from:
+
+            data/real/
+            data/fake/
+
+        You don’t run fake_dataset.py directly. It gets used inside your training scripts like train_reconstructor.py.
+
+    Final data/ folder structure should look like this:
+   
+        data/
+        ├── real_raw/         ← raw real images
+        ├── fake_raw/         ← raw fake images
+        ├── real/             ← resized real images
+        ├── fake/             ← resized fake images
+        └── fake_dataset.py   ← dataset class (used in training)
+        ├── resize_images.py 
 
 3. Create and Activate Virtual Environment
 
