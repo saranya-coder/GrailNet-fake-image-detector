@@ -63,9 +63,9 @@ To ensure a clean environment:
     Manually place the images into this folder structure at the root of the project:
 
 
-    data/
-    ├── real_raw/     ← raw real images from FFHQ
-    └── fake_raw/     ← raw fake images from ThisPersonDoesNotExist
+            data/
+            ├── real_raw/     ← raw real images from FFHQ
+            └── fake_raw/     ← raw fake images from ThisPersonDoesNotExist
     
     Step 1: Resize the raw images
     
@@ -75,9 +75,9 @@ To ensure a clean environment:
 
     This script reads from real_raw/ and fake_raw/, resizes the images (e.g., 128x128), and saves them into:
 
-        data/
-        ├── real/         ← resized real images
-        └── fake/         ← resized fake images
+                data/
+                ├── real/         ← resized real images
+                └── fake/         ← resized fake images
     
     Step 2: Load data during training
 
