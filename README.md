@@ -49,7 +49,7 @@ To ensure a clean environment:
 
 1. Clone the Repository
 
-    git clone https://github.com/yourusername/GRAIL-Net.git
+    git clone https://github.com/saranya-coder/GrailNet-fake-image-detector.git
 
 2. Download Dataset:
 
