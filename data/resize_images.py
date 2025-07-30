@@ -16,5 +16,5 @@ def resize_images(src_folder, dest_folder, size=(128, 128)):
     print(f"Resized {count} images to {size} in '{dest_folder}'")
 
 # Resize both real and fake images
-resize_images("data/real_raw", "data/real", (128, 128))
-resize_images("data/fake_raw", "data/fake", (128, 128))
+resize_images("real_raw", "real", (128, 128))
+resize_images("fake_raw", "fake", (128, 128))
